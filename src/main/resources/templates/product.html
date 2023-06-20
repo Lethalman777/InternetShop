@@ -42,10 +42,14 @@
                         <input type="search" th:field="*{price}" class="form-control input-lg" title="price" autofocus="false" />
                         <div class="alert alert-danger error-alert" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
                     </div>
-                    <input th:if="${method} == 'new'" class="btn btn-outline-dark" type="submit" th:action="@{/product/new}" th:value="#{product.confirm}"/>
-                    <input th:if="${method} == 'edit'" class="btn btn-outline-dark" type="submit" th:action="@{/product/edit/{productId}}" th:value="#{product.cancel}"/>
+                    <input class="btn btn-outline-dark" type="submit" th:action="@{/product/new}" th:value="#{product.confirm}"/>
+<!--                    <input th:if="${method} == 'edit'" class="btn btn-outline-dark" type="submit" th:action="@{/product/edit/{productId}}" th:value="#{product.confirm}"/>-->
+
                 </fieldset>
             </form>
+            <a th:href="@{/home}">
+                <button class="btn btn-outline-dark">Anuluj</button>
+            </a>
         </div>
     </div>
 </div>

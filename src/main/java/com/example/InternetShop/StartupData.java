@@ -63,13 +63,21 @@ public class StartupData implements CommandLineRunner {
     private void category(){
         Category category1 = new Category();
         Category category2 = new Category();
+        Category category3 = new Category();
+        Category category4 = new Category();
         category1.setId(1);
-        category1.setCategoryName("Adventure");
+        category1.setCategoryName("RTV AGD");
         category2.setId(2);
-        category2.setCategoryName("Novel");
+        category2.setCategoryName("Jedzenie");
+        category3.setId(3);
+        category3.setCategoryName("Meble");
+        category4.setId(4);
+        category4.setCategoryName("Gry Komputerowe");
 
         categoryRepository.save(category1);
         categoryRepository.save(category2);
+        categoryRepository.save(category3);
+        categoryRepository.save(category4);
     }
 
     private void exampleProducts(){
@@ -83,11 +91,11 @@ public class StartupData implements CommandLineRunner {
         Product product3 = new Product();
         Product product4 = new Product();
 
-        product1.setName(NAME);
+        product1.setName("Pralka");
         product1.setImageUrl(IMAGE_URL);
-        product1.setDescription(DESCRIPTION);
-        product1.setCategory(categoryRepository.findByCategoryName("Adventure"));
-        product1.setPrice(PRICE);
+        product1.setDescription("pierze pranie");
+        product1.setCategory(categoryRepository.findByCategoryName("RTV AGD"));
+        product1.setPrice(BigDecimal.valueOf(350));
 
         product2.setName(NAME);
         product2.setImageUrl(IMAGE_URL);
