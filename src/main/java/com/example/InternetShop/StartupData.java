@@ -65,13 +65,18 @@ public class StartupData implements CommandLineRunner {
     private void category(){
         Category category1 = new Category();
         Category category2 = new Category();
-        category1.setId(1);
-        category1.setCategoryName("Adventure");
-        category2.setId(2);
-        category2.setCategoryName("Novel");
+        Category category3 = new Category();
+        Category category4 = new Category();
+
+        category1.setCategoryName("RTV AGD");
+        category2.setCategoryName("Jedzenie");
+        category3.setCategoryName("Meble");
+        category4.setCategoryName("Gry Komputerowe");
 
         categoryRepository.save(category1);
         categoryRepository.save(category2);
+        categoryRepository.save(category3);
+        categoryRepository.save(category4);
     }
 
     private void exampleProducts(){
@@ -85,29 +90,29 @@ public class StartupData implements CommandLineRunner {
         Product product3 = new Product();
         Product product4 = new Product();
 
-        product1.setName(NAME);
+        product1.setName("Pralka");
         product1.setImageUrl(IMAGE_URL);
-        product1.setDescription(DESCRIPTION);
-        product1.setCategory(categoryRepository.findByCategoryName("Adventure"));
-        product1.setPrice(PRICE);
+        product1.setDescription("pierze pranie");
+        product1.setCategory(categoryRepository.findByCategoryName("RTV AGD"));
+        product1.setPrice(BigDecimal.valueOf(350));
 
-        product2.setName(NAME);
+        product2.setName("Cheeseburger");
         product2.setImageUrl(IMAGE_URL);
-        product2.setDescription(DESCRIPTION);
-        product2.setCategory(categoryRepository.findByCategoryName("Adventure"));
-        product2.setPrice(PRICE);
+        product2.setDescription("dobrze smakuje");
+        product2.setCategory(categoryRepository.findByCategoryName("Jedzenie"));
+        product2.setPrice(BigDecimal.valueOf(22));
 
-        product3.setName(NAME);
+        product3.setName("Stół");
         product3.setImageUrl(IMAGE_URL);
-        product3.setDescription(DESCRIPTION);
-        product3.setCategory(categoryRepository.findByCategoryName("Novel"));
-        product3.setPrice(PRICE);
+        product3.setDescription("duży blat");
+        product3.setCategory(categoryRepository.findByCategoryName("Meble"));
+        product3.setPrice(BigDecimal.valueOf(150));
 
-        product4.setName(NAME);
+        product4.setName("Wiedźmin 3");
         product4.setImageUrl(IMAGE_URL);
-        product4.setDescription(DESCRIPTION);
-        product4.setCategory(categoryRepository.findByCategoryName("Novel"));
-        product4.setPrice(PRICE);
+        product4.setDescription("fajna gra");
+        product4.setCategory(categoryRepository.findByCategoryName("Gry Komputerowe"));
+        product4.setPrice(BigDecimal.valueOf(60));
 
         productService.save(product1);
         productService.save(product2);
