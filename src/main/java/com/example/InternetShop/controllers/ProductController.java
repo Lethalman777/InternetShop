@@ -65,7 +65,7 @@ public class ProductController {
         }
     }
 
-    @PutMapping("/product/edit/{id}")
+    @PostMapping("/product/edit/{id}")
     public String editProduct(@PathVariable("id") long productId, @ModelAttribute("productForm") Product productForm, BindingResult bindingResult, Model model){
         productValidator.validate(productForm, bindingResult);
 
@@ -80,7 +80,7 @@ public class ProductController {
         return "redirect:/home";
     }
 
-    @DeleteMapping("/product/delete/{id}")
+    @PostMapping("/product/delete/{id}")
     public String deleteProduct(@PathVariable("id") long productId){
         logger.info(String.valueOf(productId));
         Product product = productService.findById(productId);
