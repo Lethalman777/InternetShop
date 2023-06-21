@@ -4,8 +4,8 @@ import com.example.InternetShop.models.Product;
 import com.example.InternetShop.services.CategoryService;
 import com.example.InternetShop.services.ProductService;
 import com.example.InternetShop.validators.ProductValidator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ProductController {
-    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+    private static final Logger logger = LogManager.getLogger(ProductController.class);
     private final ProductService productService;
     private final ProductValidator productValidator;
     private final CategoryService categoryService;

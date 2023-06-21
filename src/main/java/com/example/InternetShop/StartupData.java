@@ -6,8 +6,8 @@ import com.example.InternetShop.models.User;
 import com.example.InternetShop.repositories.CategoryRepository;
 import com.example.InternetShop.services.ProductService;
 import com.example.InternetShop.services.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class StartupData implements CommandLineRunner {
     private final UserService userService;
     private final ProductService productService;
     private final CategoryRepository categoryRepository;
-    private static final Logger logger = LoggerFactory.getLogger(StartupData.class);
+    private static final Logger logger = LogManager.getLogger(StartupData.class);
 
     @Autowired
     public StartupData(UserService userService, ProductService productService, CategoryRepository categoryRepository) {
@@ -30,10 +30,12 @@ public class StartupData implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        logger.debug("StartupData creation started");
         adminAccount();
         userAccount();
         category();
         exampleProducts();
+        logger.debug("StartupData creation ended");
     }
 
     private void userAccount(){
