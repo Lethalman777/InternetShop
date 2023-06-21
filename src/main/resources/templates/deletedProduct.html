@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header-css">
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="row" style="margin-top:20px">
+        <h1 th:text="Pomyślnie usunięto produkt"></h1>
+            <a th:href="@{'product/delete/' + ${product.getId()}}">
+                <button class="btn btn-outline-dark">Powrót</button>
+            </a>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>
