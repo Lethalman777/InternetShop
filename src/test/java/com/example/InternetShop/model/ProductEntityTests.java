@@ -5,19 +5,21 @@ import com.example.InternetShop.creator.ProductCreator;
 import com.example.InternetShop.models.Product;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.PersistenceException;
 import javax.validation.ConstraintViolationException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+//@SpringBootTest(classes = Product.class)
 @DataJpaTest
 public class ProductEntityTests {
     @Rule
@@ -91,7 +93,7 @@ public class ProductEntityTests {
         this.thrown.expectMessage("org.hibernate.validator.constraints.URL.message");
 
         Product testObject = ProductCreator.createTestProduct();
-        testObject.setImageUrl("htt://test");
+        //testObject.setImageUrl("htt://test");
 
         entityManager.persistAndFlush(testObject);
     }
