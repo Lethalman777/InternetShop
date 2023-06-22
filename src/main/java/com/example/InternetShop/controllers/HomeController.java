@@ -3,15 +3,18 @@ package com.example.InternetShop.controllers;
 import com.example.InternetShop.models.Product;
 import com.example.InternetShop.services.CategoryService;
 import com.example.InternetShop.services.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 public class HomeController {
     private final ProductService productService;
@@ -20,8 +23,9 @@ public class HomeController {
     private CategoryService categoryService;
 
     @Autowired
-    public HomeController(ProductService productService) {
+    public HomeController(ProductService productService, CategoryService categoryService) {
         this.productService = productService;
+        this.categoryService=categoryService;
     }
 
     @GetMapping(value = {"/","/index","/home"})

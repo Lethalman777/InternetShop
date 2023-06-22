@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.ConstraintViolationException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
 @DataJpaTest
 public class UserEntityTests {
     @Rule
@@ -63,7 +63,7 @@ public class UserEntityTests {
         this.thrown.expectMessage("must be a well-formed email address");
 
         User testObject = UserCreator.createTestUser();
-        testObject.setEmail("syqu.pl");
+        testObject.setEmail("politechnika.pl");
 
         entityManager.persistAndFlush(testObject);
     }

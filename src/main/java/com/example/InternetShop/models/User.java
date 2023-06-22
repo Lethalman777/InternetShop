@@ -20,21 +20,21 @@ public class User {
 
     @Column(name = "username", unique = true)
     @NotEmpty
-    @javax.validation.constraints.NotNull
+    @NotNull
     private String username;
 
     @Column(name = "email", unique = true)
     @Email
     @NotEmpty
-    @javax.validation.constraints.NotNull
+    @NotNull
     private String email;
 
     @NotEmpty
-    @javax.validation.constraints.NotNull
+    @NotNull
     private String password;
 
     @NotEmpty
-    @javax.validation.constraints.NotNull
+    @NotNull
     private String passwordConfirm;
 
     @Column(name = "first_name")

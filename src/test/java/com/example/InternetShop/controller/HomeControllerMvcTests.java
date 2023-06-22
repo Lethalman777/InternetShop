@@ -2,6 +2,7 @@ package com.example.InternetShop.controller;
 
 
 import com.example.InternetShop.controllers.HomeController;
+import com.example.InternetShop.services.CategoryService;
 import com.example.InternetShop.services.ProductService;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,13 +27,16 @@ public class HomeControllerMvcTests {
     @MockBean
     private ProductService productService;
 
+    @MockBean
+    private CategoryService categoryService;
+
     @Before
     public void setUp() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/jsp/view/");
         viewResolver.setSuffix(".jsp");
 
-        mockMvc = MockMvcBuilders.standaloneSetup(new HomeController(productService))
+        mockMvc = MockMvcBuilders.standaloneSetup(new HomeController(productService, categoryService))
                 .setViewResolvers(viewResolver)
                 .build();
     }
@@ -53,11 +57,5 @@ public class HomeControllerMvcTests {
     public void homeControllerStatus3() throws Exception{
         this.mockMvc.perform(get("/home")).andExpect(status().isOk())
                 .andExpect(view().name("home")).andDo(print());
-    }
-    @Test
-
-    public void homeControllerStatus4() throws Exception{
-        this.mockMvc.perform(get("/about")).andExpect(status().isOk())
-                .andExpect(view().name("about")).andDo(print());
     }
 }

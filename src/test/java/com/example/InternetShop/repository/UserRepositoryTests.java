@@ -16,7 +16,6 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@SpringBootTest
 @RunWith(SpringRunner.class)
 public class UserRepositoryTests {
 

@@ -2,8 +2,11 @@ package com.example.InternetShop.services.impl;
 
 import com.example.InternetShop.models.Product;
 import com.example.InternetShop.services.ShoppingCartService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
@@ -18,6 +21,13 @@ import java.util.Map;
 @Transactional
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     private Map<Product, Integer> cart = new LinkedHashMap<>();
+
+    private final JavaMailSender mailSender;
+
+    @Autowired
+    public ShoppingCartServiceImpl(JavaMailSender mailSender){
+        this.mailSender=mailSender;
+    }
 
     @Override
     public void addProduct(Product product) {
@@ -59,7 +69,17 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public void cartCheckout() {
+        //sendEmail("karbosky7@gmail.com", "test", "hhhhhhhhhhhh");
         cart.clear();
-        // Normally there would be payment etc.
+    }
+
+    @Override
+    public void sendEmail(String to, String subject, String body) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(body);
+
+        mailSender.send(message);
     }
 }

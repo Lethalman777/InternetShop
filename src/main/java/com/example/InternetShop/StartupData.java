@@ -6,20 +6,21 @@ import com.example.InternetShop.models.User;
 import com.example.InternetShop.repositories.CategoryRepository;
 import com.example.InternetShop.services.ProductService;
 import com.example.InternetShop.services.UserService;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Slf4j
 @Component
 public class StartupData implements CommandLineRunner {
     private final UserService userService;
     private final ProductService productService;
     private final CategoryRepository categoryRepository;
-    private static final Logger logger = LogManager.getLogger(StartupData.class);
 
     @Autowired
     public StartupData(UserService userService, ProductService productService, CategoryRepository categoryRepository) {
@@ -46,6 +47,9 @@ public class StartupData implements CommandLineRunner {
         user.setPasswordConfirm("user");
         user.setGender("Female");
         user.setEmail("user@example.com");
+        user.setFirstName("Jan");
+        user.setLastName("Kowalski");
+        user.setCity("Warszawa");
 
         userService.save(user);
     }
@@ -58,6 +62,9 @@ public class StartupData implements CommandLineRunner {
         admin.setPasswordConfirm("admin");
         admin.setGender("Male");
         admin.setEmail("admin@example.com");
+        admin.setFirstName("Adam");
+        admin.setLastName("Nowak");
+        admin.setCity("Warszawa");
 
         userService.save(admin);
     }
@@ -81,7 +88,6 @@ public class StartupData implements CommandLineRunner {
 
     private void exampleProducts(){
         final String NAME = "Example Name";
-        final String IMAGE_URL = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX7389458.jpg";
         final String DESCRIPTION = "Example Description";
         final BigDecimal PRICE = BigDecimal.valueOf(22);
 
@@ -91,25 +97,21 @@ public class StartupData implements CommandLineRunner {
         Product product4 = new Product();
 
         product1.setName("Pralka");
-        product1.setImageUrl(IMAGE_URL);
         product1.setDescription("pierze pranie");
         product1.setCategory(categoryRepository.findByCategoryName("RTV AGD"));
         product1.setPrice(BigDecimal.valueOf(350));
 
         product2.setName("Cheeseburger");
-        product2.setImageUrl(IMAGE_URL);
         product2.setDescription("dobrze smakuje");
         product2.setCategory(categoryRepository.findByCategoryName("Jedzenie"));
         product2.setPrice(BigDecimal.valueOf(22));
 
         product3.setName("Stół");
-        product3.setImageUrl(IMAGE_URL);
         product3.setDescription("duży blat");
         product3.setCategory(categoryRepository.findByCategoryName("Meble"));
         product3.setPrice(BigDecimal.valueOf(150));
 
         product4.setName("Wiedźmin 3");
-        product4.setImageUrl(IMAGE_URL);
         product4.setDescription("fajna gra");
         product4.setCategory(categoryRepository.findByCategoryName("Gry Komputerowe"));
         product4.setPrice(BigDecimal.valueOf(60));

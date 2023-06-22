@@ -3,8 +3,9 @@ package com.example.InternetShop.services.impl;
 import com.example.InternetShop.models.User;
 import com.example.InternetShop.repositories.UserRepository;
 import com.example.InternetShop.services.UserService;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,9 +15,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
-    private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
+
     private final UserRepository userRepository;
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -44,9 +46,9 @@ public class UserServiceImpl implements UserService {
 
         if (token.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(token);
-            logger.debug(String.format("User %s logged in successfully!", username));
+            log.debug(String.format("User %s logged in successfully!", username));
         }else{
-            logger.error(String.format("Error with %s authentication!", username));
+            log.error(String.format("Error with %s authentication!", username));
         }
     }
 

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header-css">
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+  <h2 th:text="#{product.detail.title}"></h2>
+  <br>
+
+  <h3 th:text="#{product.name} + ': ' + ${product.getName()}"></h3>
+  <h3 th:text="#{product.category} + ': ' + ${product.getCategory().getCategoryName()}"></h3>
+  <h3 th:text="#{product.desc} + ': ' + ${product.getDescription()}"></h3>
+  <h3 th:text="#{product.price} + ': ' + ${product.getPrice()}"></h3>
+</div>
+
+</body>
+
+</html>

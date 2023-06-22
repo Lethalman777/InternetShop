@@ -3,17 +3,19 @@ package com.example.InternetShop.controllers;
 import com.example.InternetShop.models.Product;
 import com.example.InternetShop.services.ProductService;
 import com.example.InternetShop.services.ShoppingCartService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+@Slf4j
 @Controller
 public class CartController {
-    private static final Logger logger = LogManager.getLogger(CartController.class);
+
     private final ShoppingCartService shoppingCartService;
     private final ProductService productService;
 
@@ -36,7 +38,7 @@ public class CartController {
         Product product = productService.findById(id);
         if (product != null){
             shoppingCartService.addProduct(product);
-            logger.debug(String.format("Product with id: %s added to shopping cart.", id));
+            log.info(String.format("Product with id: %s added to shopping cart.", id));
         }
         return "redirect:/home";
     }
@@ -46,7 +48,7 @@ public class CartController {
         Product product = productService.findById(id);
         if (product != null){
             shoppingCartService.removeProduct(product);
-            logger.debug(String.format("Product with id: %s removed from shopping cart.", id));
+            log.info(String.format("Product with id: %s removed from shopping cart.", id));
         }
         return "redirect:/cart";
     }

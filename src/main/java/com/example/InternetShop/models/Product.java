@@ -32,9 +32,6 @@ public class Product {
     @NotEmpty
     private String description;
 
-    @Column(name = "image")
-    private String imageUrl;
-
     @Column(name = "price")
     @NotNull
     private BigDecimal price;
