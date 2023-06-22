@@ -1,5 +1,6 @@
 package com.example.InternetShop.services.impl;
 
+import com.example.InternetShop.enums.Role;
 import com.example.InternetShop.models.User;
 import com.example.InternetShop.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -36,9 +37,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         if (user != null) {
             Set<GrantedAuthority> authorities = new HashSet<>();
-            if (Objects.equals(username, "admin")) {
+            if (user.getRole() == Role.admin) {
                 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-            }else {
+            }else if(user.getRole() == Role.worker){
+                authorities.add(new SimpleGrantedAuthority("ROLE_WORKER"));
+            } else{
                 authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
             }
             log.info(String.format("User with name: %s and password: %s created.", user.getUsername(), user.getPassword()));

@@ -1,5 +1,6 @@
 package com.example.InternetShop.controllers;
 
+import com.example.InternetShop.enums.Role;
 import com.example.InternetShop.models.User;
 import com.example.InternetShop.services.UserService;
 import com.example.InternetShop.validators.UserValidator;
@@ -13,6 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -29,6 +32,8 @@ public class RegisterController {
     @GetMapping("/register")
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
+        model.addAttribute("userRole", Role.customer);
+        model.addAttribute("workerRole", Role.worker);
 
         return "register";
     }

@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
-    //private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private final UserRepository userRepository;
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -46,7 +45,7 @@ public class UserServiceImpl implements UserService {
 
         if (token.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(token);
-            log.debug(String.format("User %s logged in successfully!", username));
+            log.info(String.format("User %s logged in successfully!", username));
         }else{
             log.error(String.format("Error with %s authentication!", username));
         }

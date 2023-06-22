@@ -1,5 +1,6 @@
 package com.example.InternetShop;
 
+import com.example.InternetShop.enums.Role;
 import com.example.InternetShop.models.Category;
 import com.example.InternetShop.models.Product;
 import com.example.InternetShop.models.User;
@@ -33,6 +34,7 @@ public class StartupData implements CommandLineRunner {
     public void run(String... args) {
         adminAccount();
         userAccount();
+        workerAccount();
         category();
         exampleProducts();
     }
@@ -48,8 +50,25 @@ public class StartupData implements CommandLineRunner {
         user.setFirstName("Jan");
         user.setLastName("Kowalski");
         user.setCity("Warszawa");
+        user.setRole(Role.customer);
 
         userService.save(user);
+    }
+
+    private void workerAccount(){
+        User worker = new User();
+
+        worker.setUsername("worker");
+        worker.setPassword("worker");
+        worker.setPasswordConfirm("worker");
+        worker.setGender("Female");
+        worker.setEmail("worker@example.com");
+        worker.setFirstName("Agata");
+        worker.setLastName("Kowalska");
+        worker.setCity("Warszawa");
+        worker.setRole(Role.worker);
+
+        userService.save(worker);
     }
 
     private void adminAccount(){
@@ -63,6 +82,7 @@ public class StartupData implements CommandLineRunner {
         admin.setFirstName("Adam");
         admin.setLastName("Nowak");
         admin.setCity("Warszawa");
+        admin.setRole(Role.admin);
 
         userService.save(admin);
     }

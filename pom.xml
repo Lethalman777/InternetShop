@@ -8,8 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>E-shop N3XT</name>
-	<description>E-commerce shop</description>
+	<name>Internet Shop</name>
+	<description>Internet shop</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

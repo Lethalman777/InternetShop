@@ -50,6 +50,7 @@ public class UserRepositoryTests {
         assertThat(found.getBalance()).isEqualTo(testObject.getBalance());
         assertThat(found.getCity()).isEqualTo(testObject.getCity());
         assertThat(found.getGender()).isEqualTo(testObject.getGender());
+        assertThat(found.getRole()).isEqualTo(testObject.getRole());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.example.InternetShop.models;
 
+import com.example.InternetShop.enums.Role;
 import lombok.*;
 
 import javax.persistence.*;
@@ -53,6 +54,11 @@ public class User {
     @NotEmpty
     @NotNull
     private String gender;
+
+    @Column(name = "role")
+    @NotEmpty
+    @NotNull
+    private Role role;
 
     @Column(name = "balance")
     private BigDecimal balance;
