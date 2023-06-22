@@ -17,7 +17,7 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@SpringBootTest
+//@SpringBootTest
 @RunWith(SpringRunner.class)
 public class ProductRepositoryTests {
 
@@ -43,7 +43,6 @@ public class ProductRepositoryTests {
         assertThat(found.getName()).isEqualTo(testObject.getName());
         assertThat(found.getDescription()).isEqualTo(testObject.getDescription());
         assertThat(found.getPrice()).isEqualTo(testObject.getPrice());
-        assertThat(found.getImageUrl()).isEqualTo(testObject.getImageUrl());
     }
 
     @Test

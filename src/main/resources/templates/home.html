@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
     <nav class="side-menu">
-      <h3>Category</h3>
+      <h3>Kategoria</h3>
       <ul>
         <li th:each="cat: ${categories}"><a th:href="@{/searchByCategory(categoryId=${cat.id})}" th:text="${cat.categoryName}"></a></li>
       </ul>
@@ -23,9 +23,6 @@
     <div class="col card-deck ml-5 my-3" th:if="${!products.isEmpty()}" >
       <div class="card" th:each="product : ${products}">
         <div sec:authorize="hasRole('ROLE_ADMIN')" class="admin">
-<!--          <button class="btn">-->
-<!--            <a th:href="@{'product/delete/' + ${product.getId()}}" th:method="Post"><i class="fas fa-times"></i></a>-->
-<!--          </button>-->
           <form th:action="@{'product/delete/' + ${product.getId()}}" th:method="Post">
             <button class="btn" type="submit">
                 <i class="fas fa-times"></i>
@@ -35,7 +32,11 @@
             <a th:href="@{'product/edit/' + ${product.getId()}}" ><i class="fas fa-wrench"></i></a>
           </button>
         </div>
-        <img class="card-img-top" th:if="${!product.getImageUrl().isEmpty()}" th:src="${product.getImageUrl()}" alt="Card image cap">
+        <div>
+          <button class="btn">
+            <a th:href="@{'product/detail/' + ${product.getId()}}" ><i class="fas fa-book"></i></a>
+          </button>
+        </div>
         <div class="card-body">
           <h4 class="card-title" th:text="${product.getName()}"></h4>
           <p class="card-text" th:text="${product.getDescription()}"></p>
@@ -54,8 +55,6 @@
     </div>
   </div>
 </div>
-
-<div th:replace="fragments/footer :: footer"></div>
 
 </body>
 
