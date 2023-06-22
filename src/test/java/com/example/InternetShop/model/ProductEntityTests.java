@@ -19,7 +19,6 @@ import javax.persistence.PersistenceException;
 import javax.validation.ConstraintViolationException;
 
 @RunWith(SpringRunner.class)
-//@SpringBootTest(classes = Product.class)
 @DataJpaTest
 public class ProductEntityTests {
     @Rule
@@ -92,8 +91,7 @@ public class ProductEntityTests {
         this.thrown.expect(ConstraintViolationException.class);
         this.thrown.expectMessage("org.hibernate.validator.constraints.URL.message");
 
-        Product testObject = ProductCreator.createTestProduct();
-        //testObject.setImageUrl("htt://test");
+        Product testObject = ProductCreator.createTestProduct();r
 
         entityManager.persistAndFlush(testObject);
     }

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
-    //private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
     private final UserRepository userRepository;
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;

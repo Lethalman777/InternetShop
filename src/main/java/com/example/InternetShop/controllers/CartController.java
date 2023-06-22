@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Slf4j
 @Controller
 public class CartController {
+
     private final ShoppingCartService shoppingCartService;
     private final ProductService productService;
 

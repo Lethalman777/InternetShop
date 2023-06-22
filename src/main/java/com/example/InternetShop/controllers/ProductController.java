@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @Controller
 public class ProductController {
+
     private final ProductService productService;
     private final ProductValidator productValidator;
     private final CategoryService categoryService;

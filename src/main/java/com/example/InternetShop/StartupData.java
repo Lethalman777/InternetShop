@@ -31,10 +31,12 @@ public class StartupData implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        logger.debug("StartupData creation started");
         adminAccount();
         userAccount();
         category();
         exampleProducts();
+        logger.debug("StartupData creation ended");
     }
 
     private void userAccount(){

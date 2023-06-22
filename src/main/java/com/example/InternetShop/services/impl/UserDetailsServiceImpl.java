@@ -21,7 +21,7 @@ import java.util.Set;
 @Slf4j
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    //private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+
     private final UserRepository userRepository;
 
     @Autowired

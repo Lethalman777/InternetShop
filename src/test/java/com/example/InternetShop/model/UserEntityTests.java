@@ -16,9 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.validation.ConstraintViolationException;
 
 @RunWith(SpringRunner.class)
-//@SpringBootTest
 @DataJpaTest
-//@ContextConfiguration(classes=User.class)
 public class UserEntityTests {
     @Rule
     public ExpectedException thrown = ExpectedException.none();

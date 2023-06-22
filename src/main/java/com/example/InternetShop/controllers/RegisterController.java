@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Slf4j
 @Controller
 public class RegisterController {
+  
     private final UserService userService;
     private final UserValidator userValidator;
 
